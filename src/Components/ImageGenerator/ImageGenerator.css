@@ -21,7 +21,7 @@
   flex-direction: column;
 }
 .img-loading img{
-  width: 312px;
+  width: 512px;
 }
 .search-box{
   display: flex;
@@ -55,6 +55,7 @@
   border-radius: 50px;
   background: #cd9e13;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 .loading-bar{
   width: 0px;
@@ -72,4 +73,8 @@
 }
 .display-none{
   display: none;
+}
+.generate-btn:hover{
+  background: #999;
+  color: #cd9e13;
 }

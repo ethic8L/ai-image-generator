@@ -12,7 +12,7 @@ const ImageGenerator = () => {
   const imageGenerator = async () => {
     const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
     if (!apiKey || inputRef.current.value === "") {
-      return; // early exit if input is empty
+      return 0; // early exit if input is empty
     }
   
     setLoading(true);
@@ -23,16 +23,18 @@ const ImageGenerator = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`
+          Authorization: `Bearer ${apiKey}`,
+          "User-Agent":"Chrome"
         },
         body: JSON.stringify({
           prompt: `${inputRef.current.value}`,
           n: 1,
-          size: "312x312"
+          size: "512x512"
         })
       });
   
-      const data = await response.json();
+      let data = await response.json();
+      console.log(data)
 
       setImage_url(data.data[0]?.url || default_image);
     } catch (error) {
